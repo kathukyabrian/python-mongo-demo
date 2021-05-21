@@ -1,8 +1,8 @@
 from flask import Flask
-from flask_pymongo import PyMongo
+from pymongo import MongoClient
 
 app = Flask(__name__)
 
-mongodb_client = PyMongo(app, uri="mongodb://localhost:27017/mongotut")
+mongodb_client = MongoClient("mongodb://localhost:27017/")
 
-db = mongodb_client.db
+db = mongodb_client["mongotut"]

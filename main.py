@@ -1,6 +1,7 @@
-from flask import  request
+from bson.objectid import ObjectId
+from flask import  request, jsonify
 from models.user import User
-from repository.user_repository import save_one
+from repository.user_repository import save_one, find_one
 from config import app, db
 
 @app.route("/add-one", methods=["POST"])
@@ -18,6 +19,10 @@ def add_one():
 
         return "User created"
 
+@app.route("/users")
+def get_one():
+    user = find_one()
+    return jsonify(user)
 
 if(__name__=="__main__"):
     app.run(debug=True)
