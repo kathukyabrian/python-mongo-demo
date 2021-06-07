@@ -24,5 +24,9 @@ def get_one():
     user = find_one()
     return jsonify(user)
 
+@app.route("/hello")
+def say_hello():
+    return jsonify({'greeting':'hello '+request.args["name"]})
+
 if(__name__=="__main__"):
     app.run(debug=True)
